@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="WebApp_ID" version="2.5">
+    
+  <display-name>Spring+Struts+Hibernate Integration Example</display-name>
+  	<welcome-file-list>
+  		<welcome-file>/WEB-INF/index.jsp</welcome-file>
+  	</welcome-file-list>
+  	
+  	<!-- Specify the spring context information location;
+  		 Default location is applicationContext.xml file in classpath
+  	 -->
+  	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:beans.xml</param-value>
+	</context-param>
+	<context-param>
+   <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+   <param-value>/WEB-INF/tiles.xml</param-value>
+   </context-param>
+	<!-- Bootstrap listener to start up and shut down Spring's root WebApplicationContext. -->
+  	<listener>  
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+	</listener>
+	<listener>
+   		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+   </listener>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ImageConverter</servlet-name>
+    <servlet-class>com.redbridge.service.servlet.ImageConverter</servlet-class>
+  </servlet>
+  <servlet>
+        <servlet-name>CatalogoImagenConverter</servlet-name>
+        <servlet-class>com.redbridge.service.servlet.CatalogoImagenConverter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageConverter</servlet-name>
+    <url-pattern>/ImageConverter</url-pattern>
+  </servlet-mapping>	  
+  <servlet-mapping>
+    <servlet-name>CatalogoImagenConverter</servlet-name>
+    <url-pattern>/CatalogoImagenConverter</url-pattern>
+  </servlet-mapping> 
+	<!-- Handles both the preparation and execution phases of the Struts dispatching process. -->
+	<filter>  
+		<filter-name>struts2</filter-name>  
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<!-- <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>  --> 
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detail</param-name>
+			<param-value>0</param-value>
+		</init-param>
+	</filter>  
+	<filter-mapping>  
+		<filter-name>struts2</filter-name>  
+		<url-pattern>*.action</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>  
+	</filter-mapping>  
+	<!-- Struts Tag Library Descriptors -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/tags/struts-bean</taglib-uri>
+			<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-html</taglib-uri>
+			<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-logic</taglib-uri>
+			<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-nested</taglib-uri>
+			<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+    
+</web-app>

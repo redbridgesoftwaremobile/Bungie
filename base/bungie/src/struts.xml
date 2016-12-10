@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">	
+
+<struts>
+    <!-- devMode is helpful when you want some extra logs for debugging -->
+    <constant name="struts.devMode" value="true" />
+    <!-- Global message resource; 
+    	 Otherwise you will have seperate message resource for each Action 
+    -->
+    <constant name="struts.custom.i18n.resources" value="messages" /> 
+    <!-- 
+    	This is important if you are planning to have slashes in Action URLs
+    	e.g. In this demo, employee is deleted using URL /delete/10
+    	This this is set to false; then struts will try to find mapping for 
+    	URL "/10" instaed of "/delete/10"
+     -->
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <!-- the changes into configuration files are taking without re-deploy  -->
+    <constant name="struts.configuration.xml.reload" value="true" /> 
+    <!-- Normal Action mappings are defined here -->
+	
+	     
+    <package name="default" namespace="" extends="struts-default">
+    <action name="index" class="com.redbridge.controller.IndexAction"  method="execute">
+            <result name="success">index.jsp</result>
+    </action>
+    <action name="filtra" class="com.redbridge.controller.IndexAction" method="filtra">
+	    	<result name="success">index.jsp</result>
+	</action>
+	<action name="detalle" class="com.redbridge.controller.DetalleAction" method="execute">
+	    	<result name="success">detalle.jsp</result>
+	</action>
+	<action name="add2carrito" class="com.redbridge.controller.DetalleAction" method="add2ShoppingCart">
+	    	<result name="success">detallecompra.jsp</result>
+	</action>
+	<action name="delete2carrito" class="com.redbridge.controller.DetalleAction" method="delete2ShoppingCart">
+	    	<result name="success">detallecompra.jsp</result>
+	</action>
+	<action name="datostarjeta" class="com.redbridge.controller.DatosTarjetaAction" method="input">
+	    	<result name="input">datostarjeta.jsp</result>	    	
+	</action>
+	<action name="preparaorden" class="com.redbridge.controller.DatosTarjetaAction" method="execute">
+	    	<result name="input">datostarjeta.jsp</result>
+	    	<result name="success">datosorden.jsp</result>
+	</action>
+	<action name="procesaorden" class="com.redbridge.controller.DatosOrdenAction" method="execute">	    	
+	    	<result name="success">ticket.jsp</result>
+	</action>	
+    </package>
+	
+	<package name="tiles" namespace="" extends="struts-default">
+	 <result-types>
+         <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+     </result-types>
+
+     <action name="registro" method="execute" 
+         class="com.redbridge.controller.RegistroAction">
+         <result name="input"      type="tiles">registro</result>
+         <result name="error"      type="tiles">registro-error</result>
+         <result name="success"    type="tiles">registro-success</result>
+      </action>
+	</package>
+	
+</struts>

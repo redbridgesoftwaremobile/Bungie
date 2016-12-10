@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="tiendaVirtual" location="11,465" size="280,140">
+    <action name="index" location="66,58" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="default" location="243,10" size="525,350">
+    <action name="list" location="66,58" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="editEmployeeList.jsp" />
+      </result>
+    </action>
+    <action name="add" location="66,163" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="delete/*" location="311,163" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="*" location="311,268" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="editEmployeeList.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.jsp" path="index.jsp" location="101,660" size="150,55" />
+  <webResource name="editEmployeeList.jsp" path="/view/editEmployeeList.jsp" location="10,240" size="150,55" />
+</Struts2Diagram>
+

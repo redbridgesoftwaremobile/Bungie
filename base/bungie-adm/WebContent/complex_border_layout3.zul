@@ -1,0 +1,304 @@
+<zk>
+	<style>
+		.breeze .complex-layout, .breeze .complex-layout .z-south,
+		.breeze .complex-layout .z-west { background: #F7F7F7; }
+		.z-borderlayout { background: #FFFFFF } .complex-layout .z-north
+		{ background: #008BB6; } img.complex-layout-header-img {
+		padding: 0 10px; } .complex-layout-header-label { position:
+		relative; top: -30px; padding-left: 40px; font-size: 24px;
+		color: White; font-weight: bold; } .inner-border, .inner-border
+		.z-north, .inner-border .z-west, .inner-border .z-south,
+		.inner-border .z-east { background: #FFFFFF; } .dl-link {
+		text-decoration: none; cursor: pointer; }
+	</style>
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('demo.layout.complex_border_layout.ComplexBorderlayoutViewModel')">
+		<borderlayout sclass="complex-layout" height="810px">
+			<north size="90px" border="0">
+				<div>
+					<div style="float:right">
+						<textbox sclass="demo-search-inp" value="@bind(vm.search)" />
+						<button label="Search ZK Resource"
+							onClick="@command('search')" />
+					</div>
+					<image sclass="complex-layout-header-img"
+						src="/images/ZK-Logo.gif" />
+					<label sclass="complex-layout-header-label"
+						value="ZK Project" />
+				</div>
+			</north>
+			<!-- Sidebar -->
+			<west width="1px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+			</west>
+			<east width="1"></east>
+			<!-- Content -->
+			<center>
+				<borderlayout sclass="inner-border">
+					<north border="0" height="4%" margins="2,3,0,0">
+						<label value="ABC DE CELULARES" style="font-size:20px;" />
+					</north>
+					<center border="0" margins="0,3,3,3">
+					    <tabbox id="tb" height="300px">
+	<tabs id="tabs">
+		<tab id="ALTA" label="ALTA DE CELULAR" />
+		<tab id="BAJA" label="BAJA DE CELULAR" />
+		<tab id="CAMBIO" label="CAMBIO DE CELULAR" />
+		<tab id="CONSULTA" label="CONSULTA DE CELULAR" />
+		
+	</tabs>
+	<tabpanels>
+		<tabpanel vflex="true">		
+		<panel title="Datos del Celular" border="normal" height="90%">
+							<panelchildren>
+								<grid style="border:0;">
+									<rows>
+									    <row>
+									       <cell width="20%"> <label value="ID Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox maxlength="10" cols="10" name="idCelular" id="idCelular">
+												</textbox>
+									       </cell>																			
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Nombre Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox maxlength="30" cols="30" name="nombreCelular" id="nombreCelular">
+												</textbox>
+									       </cell>																			
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Descripcion Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox maxlength="30" cols="30" name="descCelular" id="descCelular">
+												</textbox>
+									       </cell>																			
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Capacidad Celular"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									       <combobox><comboitem label="1" /><comboitem label="2" /></combobox>									           
+									       </cell>
+									       																			
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Sistema Operativo"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Tipo Telefono"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Tamaño Display"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Marca Telefono"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Color Telefono"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Carrier"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Nota Tecnica"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox multiline="true" rows="5" value="" width="99%" name="notaCelular" id="notaCelular" />						    												
+									       </cell>																			
+									    </row>
+										<row>
+										   <cell width="20%"> <label value="foto Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <fileupload label="Upload" onUpload="img.setContent(event.media)" />					    												
+									       </cell>								
+										</row>
+										
+									</rows>
+								</grid>
+							</panelchildren>
+						</panel></tabpanel>
+		<tabpanel>This is panel B</tabpanel>
+		<tabpanel><panel title="Datos del Celular" border="normal" height="90%">
+							<panelchildren>
+								<grid style="border:0;">
+									<rows>
+									    <row>
+									       <cell width="20%"> <label value="ID Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox maxlength="10" cols="10" name="idCelular" id="idCelular2">
+												</textbox>
+									       </cell>																			
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Nombre Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox maxlength="30" cols="30" name="nombreCelular" id="nombreCelular2">
+												</textbox>
+									       </cell>																			
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Descripcion Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox maxlength="30" cols="30" name="descCelular" id="descCelular2">
+												</textbox>
+									       </cell>																			
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Capacidad Celular"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									       <combobox><comboitem label="1" /><comboitem label="2" /></combobox>									           
+									       </cell>
+									       																			
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Sistema Operativo"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Tipo Telefono"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Tamaño Display"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Marca Telefono"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Color Telefono"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									    <cell width="20%"> <label value="Carrier"></label>
+									       </cell>
+									       <cell width="30%" align="left">
+									            <combobox><comboitem label="1" /><comboitem label="2" /></combobox>
+									       </cell>
+									    </row>
+									    <row>
+									       <cell width="20%"> <label value="Nota Tecnica"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <textbox multiline="true" rows="5" value="" width="99%" name="notaCelular" id="notaCelular2" />						    												
+									       </cell>																			
+									    </row>
+										<row>
+										   <cell width="20%"> <label value="foto Celular"></label>
+									       </cell>
+									       <cell width="80%" align="left">
+									            <fileupload label="Upload" onUpload="img.setContent(event.media)" />					    												
+									       </cell>								
+										</row>
+										
+									</rows>
+								</grid>
+							</panelchildren>
+						</panel></tabpanel>
+		<tabpanel><grid id="grid" mold="paging" pageSize="4">
+                <columns>
+                    <column hflex="1" label="Order #" align="left" />
+                    <column hflex="2" label="Item Purchased" align="center" />
+                    <column hflex="3" label="Purchased Time" align="center" />
+                    <column hflex="1" label="Paid" align="right" />
+                </columns>
+                <rows>
+                    <zscript><![CDATA[
+                        import org.zkoss.zul.*; 
+                        int[] orderArray = new int[12];
+                        for (int j=0; j<12; j++){
+                            orderArray[j]= 390 + j;
+                        }
+                    ]]></zscript>
+                    <row forEach="${orderArray}">
+                        <label value="${each}" />
+                        <listbox mold="select" >
+                            <listitem label="Java" />
+                            <listitem label="Latte" />
+                            <listitem label="Mocha" />
+                        </listbox>
+                        <timebox cols="12" format="a hh:mm:ss" mold="rounded"
+                            onCreate="self.value = new Date()" />
+                        <checkbox label="No" onCheck='self.label= self.isChecked()? "Yes" : "No"' />
+                    </row>
+                </rows>
+            </grid></tabpanel>
+		
+	</tabpanels>
+</tabbox>
+						
+					</center>
+					<east border="0" width="1%" margins="0,0,3,3">
+					</east>
+					<south border="1" height="10%" margins="0,0,3,3">
+					<panel>
+						<panelchildren>
+							<grid>
+								<rows>
+									
+								</rows>
+							</grid>
+						</panelchildren>
+					</panel></south>
+					
+				</borderlayout>
+			</center>
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<toolbar mold="panel" align="center">
+					
+					<separator orient="vertical" bar="true" />
+					Derechos Reservados SOLMOVI SA CV
+				</toolbar>
+			</south>
+		</borderlayout>
+	</div>
+</zk>

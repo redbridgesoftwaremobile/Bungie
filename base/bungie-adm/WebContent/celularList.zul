@@ -1,0 +1,113 @@
+<?page title="Celulars List" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="celularList" border="none" height="80%" width="96%"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('com.redbridge.zkoss.CelularListVM')">
+		
+		<div width="100%">
+			<div sclass="sectionTitle">
+				<separator />
+				<label value="Celulares" sclass="sectionTitleLabel" />
+				<separator />
+			</div>
+			<div style="float:right">
+				<button label="Agregar Celular" onClick="@command('onAddNew')"
+					mold="trendy" sclass="mybutton button theme small" />
+				<button label="Salir" mold="trendy" id="btnlogout"
+					sclass="mybutton button theme small" onClick="@command('Logout')" />
+			</div>
+			<div style="clear: both;"></div>
+			<div sclass="sectionSeperator"></div>
+		</div>
+		<separator />
+		<listbox id="" mold="paging"  pageSize="8" pagingPosition="top"
+			sclass="mylist" selectedItem="@bind(vm.selectedItem)"
+			model="@load(vm.dataSet)">
+			<auxhead>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="10" mold="rounded"
+						value="@bind(vm.dataFilter.codigo)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFilter.nombre)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="20" mold="rounded"
+						value="@bind(vm.dataFilter.marca)" onChange="@command('doFilter')"
+						instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFilter.tipo)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="10" mold="rounded"
+						value="@bind(vm.dataFilter.capacidad)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="10" mold="rounded"
+						value="@bind(vm.dataFilter.color)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+			</auxhead>
+			<listhead sizable="true">
+				<listheader label="Codigo" sortDirection="ascending"
+					sort="auto(codigo)" />
+				<listheader label="Nombre" sort="auto(marca)" />	
+				<listheader label="Marca" sort="auto(marca)" />
+				<listheader label="Tipo" sort="auto(tipo)" />
+				<listheader label="Capacidad" sort="auto(capacidad)" />
+				<listheader label="Color" sort="auto(color)"/>
+				<listheader label="Acción" />
+			</listhead>
+			<template name="model" var="p1">
+				<listitem>
+				    <listcell label="@load(p1.codigo)" />
+					<listcell label="@load(p1.nombre)" />
+					<listcell label="@load(p1.marca)" />
+					<listcell label="@load(p1.tipo)" />
+					<listcell label="@load(p1.capacidad)" />
+					<listcell label="@load(p1.color)" />
+					
+					<listcell>
+						<hbox spacing="20px">
+							<image
+								onClick="@command('onEdit',celularRecord=p1)" sclass="fimageedit"
+								visible="@load(p1.system eq 0)"
+								tooltiptext="Editar Detalle Celular">
+							</image>
+							<image
+								onClick="@command('openAsReadOnly',celularRecord=p1)"
+								sclass="fimageView" tooltiptext="Ver Detalle Celular">
+							</image>
+							<image
+								tooltip="msgPopup, position=before_start, delay=500"
+								sclass="fImageSystem" visible="@load(p1.system eq 1)" />
+							<image
+								onClick="@command('onDelete',celularRecord=p1)"
+								visible="@load(p1.system eq 0)" sclass="fimageDelete"
+								tooltiptext="Eliminar Celular ">
+							</image>
+						</hbox>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+		<popup id="msgPopup">
+			<label id="msg"
+				value="Celular definido en Sistema. Editar y Eliminar no permitidos.">
+			</label>
+		</popup>
+	</window>
+</zk>

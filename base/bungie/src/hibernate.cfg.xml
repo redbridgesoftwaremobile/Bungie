@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+<session-factory>
+	<property name="myeclipse.connection.profile">
+		MySql Driver
+	</property>
+	<property name="connection.url">
+		jdbc:mysql://localhost:3306/tiendavirtual
+	</property>
+	<!-- <property name="connection.username">root</property>
+	<property name="connection.password">Vergara2015</property> -->
+	<property name="connection.username">tiendavirtual</property>
+	<property name="connection.password">redbridge</property>
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<mapping class="com.redbridge.entity.MarcaEntity" />
+	<mapping class="com.redbridge.entity.ColorEntity" />
+	<mapping class="com.redbridge.entity.DisplaySizeEntity" />
+	<mapping class="com.redbridge.entity.CapacidadEntity" />
+	<mapping class="com.redbridge.entity.CarrierEntity" />
+	<mapping class="com.redbridge.entity.CatalogoImagenEntity" />
+	<mapping class="com.redbridge.entity.ClienteEntity" />
+	<mapping class="com.redbridge.entity.DomicilioEntity" />
+	<mapping class="com.redbridge.entity.FichaTecnicaEntity" />
+	<mapping class="com.redbridge.entity.PrecioProductoEntity" />
+	<mapping class="com.redbridge.entity.ProductoEntity" />
+	<mapping class="com.redbridge.entity.SistemaOperativoEntity" />
+	<mapping class="com.redbridge.entity.TarjetaClienteEntity" />
+	<mapping class="com.redbridge.entity.TipoProductoEntity" />
+	<mapping class="com.redbridge.entity.UsuarioEntity" />
+	<mapping class="com.redbridge.entity.VentaProductoEntity" />
+</session-factory>
+</hibernate-configuration>
